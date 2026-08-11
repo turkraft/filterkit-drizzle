@@ -1,0 +1,53 @@
+{
+  "name": "@turkraft/filterkit-drizzle",
+  "version": "1.0.0",
+  "description": "Drizzle ORM integration for FilterKit — convert filter expressions to Drizzle where clauses.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turkraft/filterkit-drizzle.git"
+  },
+  "author": "Yusuf Torshid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/turkraft/filterkit-drizzle/issues"
+  },
+  "homepage": "https://github.com/turkraft/filterkit-drizzle#readme",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "filterkit",
+    "drizzle",
+    "drizzle-orm",
+    "where",
+    "filter",
+    "expression",
+    "spring-filter"
+  ],
+  "peerDependencies": {
+    "@turkraft/filterkit": "^1.0.0",
+    "drizzle-orm": "^0.30.0"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/torshid"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "vitest": "^3.1.0",
+    "drizzle-orm": "^0.30.0"
+  }
+}
