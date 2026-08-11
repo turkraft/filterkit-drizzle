@@ -20,6 +20,14 @@ const result = await db.select().from(users).where(where);
 npm install @turkraft/filterkit-drizzle @turkraft/filterkit drizzle-orm
 ```
 
+## Ecosystem
+
+See the other FilterKit integrations:
+
+- [TanStack](https://github.com/turkraft/filterkit-tanstack) — TanStack Table
+- [QueryBuilder](https://github.com/turkraft/filterkit-querybuilder) — react-querybuilder
+- [Prisma](https://github.com/turkraft/filterkit-prisma) — Prisma where clauses
+
 ## Usage
 
 Define a column map from your filter field names to Drizzle column objects:
