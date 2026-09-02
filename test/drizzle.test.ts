@@ -3,11 +3,11 @@ import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 import { toDrizzleWhere } from '../src/index.js';
 
 const users = sqliteTable('users', {
-  name: text().notNull(),
-  age: integer().notNull(),
-  active: integer({ mode: 'boolean' }).notNull(),
-  email: text(),
-  role: text().notNull(),
+  name: text('name').notNull(),
+  age: integer('age').notNull(),
+  active: integer('active', { mode: 'boolean' }).notNull(),
+  email: text('email'),
+  role: text('role').notNull(),
 });
 
 const cols = {
@@ -95,7 +95,11 @@ describe('toDrizzleWhere', () => {
     expect(toDrizzleWhere("age > 18 and (name : 'John' or name : 'Jane')", cols)).toBeDefined();
   });
 
-  it('unknown field returns undefined', () => {
-    expect(toDrizzleWhere("unknown : 'val'", cols)).toBeUndefined();
+  it('unknown field is reported', () => {
+    expect(() => toDrizzleWhere("unknown : 'val'", cols)).toThrow(/Unknown filter field `unknown`/);
+  });
+
+  it('unknown field can be ignored on request', () => {
+    expect(toDrizzleWhere("unknown : 'val'", cols, { onUnknownField: 'ignore' })).toBeUndefined();
   });
 });
